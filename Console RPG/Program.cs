@@ -14,6 +14,8 @@ namespace Console_RPG
             HealthPostionItem potionI = new HealthPostionItem("Helth potion I");
             HealthPostionItem potionII = new HealthPostionItem("Helth potion II");
             HealthPostionItem potionIII = new HealthPostionItem("Helth potion III");
+
+            Location bedroom;
         }
     }
 }
