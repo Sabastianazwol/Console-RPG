@@ -11,7 +11,7 @@ namespace Console_RPG
     {
 
         public static List<Item> Inventory = new List<Item>() { HealthPotionItem.potion1, HealthPotionItem.potion1 };
-
+        
         public int Level;
 
         public Player(string name, int hp, int mana, Stats stats, int Level) : base(name, hp, mana, stats)
