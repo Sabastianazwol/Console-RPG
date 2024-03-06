@@ -10,7 +10,7 @@ namespace Console_RPG
     class Player : Entity
     {
 
-        public static List<Item> Inventory = new List<Item>() { HealthPotionItem.potion1, HealthPotionItem.potion1 };
+        public static List<Item> Inventory = new List<Item>() { Item.potionI, Item.potionII };
         
         public int Level;
 

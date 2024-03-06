@@ -40,49 +40,26 @@ namespace Console_RPG
             this.maxMana = mana;
             this.stats = stats;
         }
-        public abstract Entity ChooseTraget(List<Entity> trgets);
-        public abstract void Attact(Entity trget);
+
+
+
+        public abstract void DoTurn(List<Player> players, List<Enemy> enemies);
+        public abstract Entity ChooseTarget(List<Entity> targets);
+        public abstract void Attack(Entity target);
+
+
+        public void UseItem(Item item, Entity target)
+        {
+            item.Use(this, target);
+        }
+
+
+
+
 
 
     }
 
 
-    class Player : Entity
-    {
-        public int level;
-
-        public Player(string name, int hp, int mana, Stats stats, int level) : base(name, hp, mana, stats)
-        {
-            this.level = level;
-        }
-
-        public override Entity ChooseTraget(List<Entity> trgets)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Attact(Entity trget)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    class enemy : Entity
-    {
-        public int coinsDroppedOnDefeated;
-        public int level;
-
-        public enemy(string name, int hp, int mana, Stats stats, int level) : base(name, hp, mana, stats)
-        {
-            this.level = level;
-        }
-        public override Entity ChooseTraget(List<Entity> trgets)
-        {
-            throw new NotImplementedException();
-
-        }
-        public override void Attact(Entity trget)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    
 }

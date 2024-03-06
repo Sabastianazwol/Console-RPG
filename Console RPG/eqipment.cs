@@ -4,7 +4,18 @@ using System.Text;
 
 namespace Console_RPG
 {
-    internal class eqipment
-    {
-    }
+    abstract class internal : item
 }
+        public float durability;
+    public float weight;
+    public float rarity;
+
+
+
+   
+
+       
+
+
+
+         
