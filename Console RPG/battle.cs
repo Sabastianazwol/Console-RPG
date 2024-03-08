@@ -24,7 +24,7 @@ namespace Console_RPG
             {
                 foreach (var player in players)
                 {
-                    if (player.currentHP > 0)
+                    if (player.currentHp > 0)
                     {
                         Console.WriteLine("It's " + player.name + "'s turn.");
                         player.DoTurn(players, enemies);
@@ -35,7 +35,7 @@ namespace Console_RPG
 
                 foreach (var enemies in enemies)
                 {
-                    if (enemies.currentHP > 0)
+                    if (enemies.currentHp > 0)
                     {
                         Console.WriteLine("It's " + enemies.name + "'s turn.");
                         enemies.DoTurn(players, this.enemies);
@@ -49,13 +49,13 @@ namespace Console_RPG
                 }
 
 
-                if (players.TrueForAll(player => player.currentHP <= 0))
+                if (players.TrueForAll(player => player.currentHp <= 0))
                 {
                     Console.WriteLine("");
                     break;
                 }
 
-                if (enemies.TrueForAll(enemy => enemy.currentHP <= 0))
+                if (enemies.TrueForAll(enemy => enemy.currentHp <= 0))
                 {
                     Console.WriteLine("");
                     //Other enemies stuff like drops, ect.
