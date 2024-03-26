@@ -8,7 +8,7 @@ namespace Console_RPG
     {
         public int experienceDroppedOnDeath;
 
-        public Enemy(string name, int hp, int mana, Stats stats, int experienceDroppedOnDeath) : base(name, hp, mana, stats)
+        public Enemy(string name, int hp, int mana, stats stats, int experienceDroppedOnDeath) : base(name, hp, mana, stats)
         {
             this.experienceDroppedOnDeath = experienceDroppedOnDeath;
         }
@@ -25,7 +25,7 @@ namespace Console_RPG
             Console.WriteLine(this.name + " attacked " + target.name + " ! ");
         }
 
-        public override void DoTurn(List<Player> players, List<Enemy> enemies)
+        public override void DoTurn(List<player> players, List<Enemy> enemies)
         {
             Entity target = ChooseTarget(players.Cast<Entity>().ToList());
             Attack(target);

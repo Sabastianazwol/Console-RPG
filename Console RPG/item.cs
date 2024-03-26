@@ -1,82 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Console_RPG
 {
     abstract class Item
     {
-
-        public static HealthPostionItem potionI = new HealthPostionItem("Helth potion I", "", 0, 0, 0, 0);
-        public static HealthPostionItem potionII = new HealthPostionItem("Helth potion II", "", 0, 0, 0, 0);
-        public static HealthPostionItem potionIII = new HealthPostionItem("Helth potion III", "", 0, 0, 0, 0);
-
-
-        public int shopPrice;
-        public int maxAmount;
         public string name;
         public string description;
+        public int shopPrice;
         public int sellPrice;
-           public int price;
 
-
-
-        public Item(string name, string description, int shopPrice, int sellPrice, int maxAmount)
+        public Item(string name, string description, int shopPrice, int sellPrice)
         {
             this.name = name;
             this.description = description;
             this.shopPrice = shopPrice;
-            this.maxAmount = maxAmount;
             this.sellPrice = sellPrice;
-            this.price = maxAmount;
         }
+
         public abstract void Use(Entity user, Entity target);
     }
 
-    class HealthPostionItem : Item
-    {
-        public int healAmount;
-
-        public HealthPostionItem(string name, string description, int shopPrice, int sellPrice, int maxAmount, int healAmount) : base(name, description, shopPrice, sellPrice, maxAmount)
-        {
-            this.healAmount = healAmount; 
-
-        }
-
-        public override void Use(Entity user, Entity target)
-        {
-            user.currentHp += this.healAmount;
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
 }
- 
-
-   
-   
-
-
-
-
-
- 
-  
-

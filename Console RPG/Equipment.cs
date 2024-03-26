@@ -1,118 +1,83 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Console_RPG
 {
-
     abstract class Equipment : Item
     {
-        public float durability;
+        public float duralbility;
         public float weight;
         public float rarity;
         public bool isEquipped;
-
-        protected Equipment(string name, string description, int shopPrice, int sellPrice, int maxAmount, float durability, float weight, float rarity) : base(name, description, shopPrice, sellPrice, maxAmount)
+        protected Equipment(string name,
+            string description,
+            int shopPrice,
+            int sellPrice,
+            float duralbility,
+            float weight,
+            float rarity)
+            : base(name, description, shopPrice, sellPrice)
         {
-            this.durability = durability;
+            this.duralbility = duralbility;
             this.weight = weight;
             this.rarity = rarity;
             this.isEquipped = false;
         }
 
 
-
-
-
-
-
-    }
-
-    class Armor : Equipment
-    {
-        public int defense;
-
-
-        public Armor(string name, string description, int shopPrice, int sellPrice, int maxAmount, float durability, float weight, int defense, float rarity) : base(name, description, shopPrice, sellPrice, maxAmount, durability, weight, rarity)
+        class Armor : Equipment
         {
-            this.defense = defense;
+            public int defense;
+            public stats modier;
 
+            public Armor(string name, string description, int shopPrice, int sellPrice, float duralbility, float weight, float rarity, int defense, stats modier) : base(name, description, shopPrice, sellPrice, duralbility, weight, rarity)
+            {
+                this.defense = defense;
+            }
+
+            public override void Use(Entity user, Entity target)
+            {
+                this.isEquipped = !this.isEquipped; // checks and changes if it equipped.
+
+                if (this.isEquipped)
+                {//increase the target's defense if they equip the item.
+                    target.stats.Constitution += this.defense;
+                }
+                else
+                {
+                    // decrease the target's defense if they unequip the item.
+                    target.stats.Constitution -= this.defense;
+                }
+            }
         }
 
-        public override void Use(Entity user, Entity target)
+        class weapon : Equipment
         {
-            // Flip the value of whether or not it's equipped 
-            this.isEquipped = !this.isEquipped;
+            public int damage;
+            public stats modier;
 
-            if (this.isEquipped)
+            public weapon(string name, string description, int shopPrice, int sellPrice, float duralbility, float weight, float rarity, int damge, stats modier) : base(name, description, shopPrice, sellPrice, duralbility, weight, rarity)
             {
-                // Increase the target's defense if they equip the item.
-                target.stats.defense += this.defense;
+                this.damage = damage;
             }
 
-            else
+            public override void Use(Entity user, Entity target)
             {
-                // Decrease the target's defense if they unequip the item.
-                target.stats.defense -= this.defense;
+                this.isEquipped = !this.isEquipped; // checks and changes if it equipped.
+
+                if (this.isEquipped)
+                {//increase the target's defense if they equip the item.
+                    target.stats.Strength += this.damage;
+                }
+                else
+                {
+                    // decrease the target's defense if they unequip the item.
+                    target.stats.Strength -= this.damage;
+                }
             }
-
-
-
-        }
-    }
-
-
-    class Weapon : Equipment
-    {
-        public int damage;
-
-
-        public Weapon(string name, string description, int shopPrice, int sellPrice, int maxAmount, float durability, float weight, int damage, float rarity) : base(name, description, shopPrice, sellPrice, maxAmount, durability, weight, rarity)
-        {
-            this.damage = damage;
-
-        }
-
-        public override void Use(Entity user, Entity target)
-        {
-            // Flip the value of whether or not it's equipped 
-            this.isEquipped = !this.isEquipped;
-
-            if (this.isEquipped)
-            {
-                // Increase the target's defense if they equip the item.
-                target.stats.strength += this.damage;
-            }
-
-            else
-            {
-                // Decrease the target's defense if they unequip the item.
-                target.stats.strength -= this.damage;
-            }
-
-
-
         }
     }
-
-
-
 }
-
-
-    
-
-
-
-
-
-      
-
-
-   
-
-       
-
-
-
-         

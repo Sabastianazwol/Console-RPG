@@ -2,73 +2,59 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+
 namespace Console_RPG
 {
-    class Battle
+    class battle : POI
     {
         public List<Enemy> enemies;
-        public bool isresolved;
 
-        public Battle(List<Enemy> enemies)
+
+        public battle(List<Enemy> eniemies) : base(false)
         {
             this.enemies = enemies;
-            this.isresolved = false;
+
         }
 
 
-
-
-        public void Resolve(List<Player> players)
+        public override void Resolve(List<player> players)
         {
             while (true)
-            {
-                foreach (var player in players)
+            {// run this code on each of the players
+                foreach (var item in players)
                 {
-                    if (player.currentHp > 0)
-                    {
-                        Console.WriteLine("It's " + player.name + "'s turn.");
-                        player.DoTurn(players, enemies);
-                    }
+                    Console.WriteLine("It is" + item.name + "'s turn");
+                    item.DoTurn(players, enemies);
 
                 }
 
 
-                foreach (var enemies in enemies)
+                foreach (var item in enemies)
                 {
-                    if (enemies.currentHp > 0)
-                    {
-                        Console.WriteLine("It's " + enemies.name + "'s turn.");
-                        enemies.DoTurn(players, this.enemies);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enemy can no longer continue fighting");
-                    }
-
+                    Console.WriteLine("It is" + item.name + "'s turn");
+                    item.DoTurn(players, enemies);
 
                 }
 
-
-                if (players.TrueForAll(player => player.currentHp <= 0))
+                //loseing 
+                if (players.TrueForAll(player => player.currentHP <= 0))
                 {
-                    Console.WriteLine("");
+                    Console.WriteLine("one more will rest agian");
                     break;
                 }
-
-                if (enemies.TrueForAll(enemy => enemy.currentHp <= 0))
+                //wo
+                if (players.TrueForAll(Enemy => Enemy.currentHP <= 0))
                 {
-                    Console.WriteLine("");
-                    //Other enemies stuff like drops, ect.
+                    Console.WriteLine("you saved yourself by dooming another");
                     break;
                 }
-
-
-
+                Console.WriteLine("one story ends another contenues");
             }
-
-            //Anything that happens no matter who wins
-
         }
+
+
+
+
 
 
 
