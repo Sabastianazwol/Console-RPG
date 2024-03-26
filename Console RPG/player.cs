@@ -54,29 +54,29 @@ namespace Console_RPG
 
 
         public void ClassPick()
-        {// Player picks From fighter ,mage ,cleric
+        {// Player picks From SPIDERMAN ,DEREK ,ZELDA
             CharClass = Console.ReadLine();
-            if (CharClass == "FIGHTER")
+            if (CharClass == "SPIDERMAN")
             {
-                CharClass = "FIGHTER";
-                Console.WriteLine("You were trained in the blade, saddly that will only keep you alive longer");
+                CharClass = "SPDERMAN";
+                Console.WriteLine("YOU HAVE TRIANED AND COULD NOT KEEP UP");
                 new stats();
 
             }
-            else if (CharClass == "MAGE")
+            else if (CharClass == "DEREK ")
             {
-                CharClass = "MAGE";
-                Console.WriteLine("tomes and scroll fill your mind, all this knowlege soon to be lost");
+                CharClass = "DEREK";
+                Console.WriteLine(" HAS NO POWER CANT BATTLE HIM,");
             }
-            else if (CharClass == "CLERIC")
+            else if (CharClass == "ZELDA")
             {
-                CharClass = "CLERIC";
-                Console.WriteLine("the essence of the gods stay with you, but they will not save you");
+                CharClass = "ZELDA";
+                Console.WriteLine("ZELDA RULER OF THE WORLD CAN BATTLE HIM TO STRONG.");
             }
             else
             {
                 Console.WriteLine("Life cant be unlived, choose your past");
-                Console.WriteLine("|FIGHTER| |MAGE| |CLERIC|");
+                Console.WriteLine("|SPIDERMAN| |DEREK| |ZELDA|");
             }
             ClassPick();
         }
